@@ -22,7 +22,7 @@ app.get("/api/recipes", (req, res) => {
     });
 });
 
-app.get("/api/recipes/:recipe_name", (req, res) => {
+app.get("/api/recipes/style/:recipe_name", (req, res) => {
   const recipeName = req.params.recipe_name;
   sql`SELECT * FROM recipes WHERE recipe_name = ${recipeName}`
     .then((data) => {
@@ -37,6 +37,19 @@ app.get("/api/recipes/:recipe_name", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+app.get("/api/recipes/random", (req, res) => {
+  sql`SELECT * FROM recipes ORDER BY RANDOM() LIMIT 1`
+    .then((data) => {
+      console.log(data)
+      res.json(data[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
 
 app.post("/api/recipes", (req, res) => {
   const { contributor, recipe_name, style, image_url } = req.body;
