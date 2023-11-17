@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [recipes, setrecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/api/tasks")
+    fetch("/api/recipes")
       .then((res) => res.json())
-      .then((tasks) => {
-        setTasks(tasks);
+      .then((recipes) => {
+        setrecipes(recipes);
       });
   }, []);
 
   return (
     <main>
-      {tasks.map((task) => (
-        <span className="task" key={task.id}>
-          {task.description}
+      {recipes.map((recipe) => (
+        <span className="recipe" key={recipe.id}>
+          {recipe.description}
         </span>
       ))}
     </main>

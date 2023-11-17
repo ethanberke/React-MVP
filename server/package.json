@@ -10,7 +10,6 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.3",
     "postgres": "^3.3.3"

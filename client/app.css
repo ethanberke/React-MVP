@@ -6,7 +6,7 @@ body {
   padding: 8px;
 }
 
-.task {
+.recipe {
   display: flex;
   align-items: center;
   border: 1px solid black;
@@ -14,10 +14,10 @@ body {
   max-width: 200px;
 }
 
-.task + .task {
+.recipe + .recipe {
   margin-top: 4px;
 }
 
-.task > * + * {
+.recipe > * + * {
   margin-left: 4px;
 }
