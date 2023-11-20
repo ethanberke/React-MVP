@@ -1,9 +1,17 @@
 body {
-  margin: 0;
+  margin: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top:50px;
+  padding-bottom:50px;
 }
+
 
 .main {
   padding: 8px;
+  text-align:center;
 }
 
 .recipe {

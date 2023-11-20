@@ -43,7 +43,6 @@ app.get("/api/recipes", (req, res) => {
       instructions ON recipes.id = instructions.recipe_id
   `
     .then((data) => {
-      // Rearrange the data to group ingredients and instructions by recipe
       const recipes = {};
       data.forEach((row) => {
         const {
@@ -58,7 +57,7 @@ app.get("/api/recipes", (req, res) => {
           step_order,
           step,
         } = row;
-        
+
         if (!recipes[recipe_id]) {
           recipes[recipe_id] = {
             recipe_id,
@@ -80,7 +79,6 @@ app.get("/api/recipes", (req, res) => {
         }
       });
 
-      // Convert object of recipes to an array
       const recipesArray = Object.values(recipes);
 
       res.send(recipesArray);
@@ -92,7 +90,8 @@ app.get("/api/recipes", (req, res) => {
 });
 
 
-app.get("/api/recipes/style/:recipe_name", (req, res) => {
+
+app.get("/api/recipes/:recipe_name", (req, res) => {
   const recipeName = req.params.recipe_name;
   sql`SELECT * FROM recipes WHERE recipe_name = ${recipeName}`
     .then((data) => {
@@ -108,17 +107,17 @@ app.get("/api/recipes/style/:recipe_name", (req, res) => {
     });
 });
 
-app.get("/api/recipes/random", (req, res) => {
-  sql`SELECT * FROM recipes ORDER BY RANDOM() LIMIT 1`
-    .then((data) => {
-      console.log(data)
-      res.json(data[0]);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-});
+// app.get("/api/recipes/random", (req, res) => {
+//   sql`SELECT * FROM recipes ORDER BY RANDOM() LIMIT 1`
+//     .then((data) => {
+//       console.log(data)
+//       res.json(data[0]);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// });
 
 //recipes
 app.post("/api/recipes", (req, res) => {
