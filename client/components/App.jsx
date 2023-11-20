@@ -121,8 +121,6 @@ const App = () => {
     <main className="main">
       <h1>Galvanize Recipes</h1>
       
-      
-      
       <select onChange={(event) => handleRecipeSelection(event.target.value)}>
     <option value="">Select a recipe</option>
     {recipes.map((recipe) => (
@@ -131,6 +129,7 @@ const App = () => {
       </option>
     ))}
   </select>
+  <br />
   <br />
       <Recipes
       selectedRecipe={selectedRecipe}

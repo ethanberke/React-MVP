@@ -38,7 +38,14 @@ const Contribute = ({ onRecipeSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRecipeSubmit(newRecipe);
+    const confirm = window.confirm("Are you ready to submit your recipe?")
+    if (confirm) {
+      onRecipeSubmit(newRecipe);
+      setTimeout(() => {
+        alert("Recipe submitted successfully!")
+        window.location.reload();
+      }, 500);
+    }
   };
 
   return (
@@ -46,6 +53,17 @@ const Contribute = ({ onRecipeSubmit }) => {
     <div className="contribute">
       <h3>Contribute a Recipe</h3>
       <form onSubmit={handleSubmit}>
+      <label>
+        Contributor:
+        <input
+          type="text"
+          name="contributor"
+          value={newRecipe.contributor}
+          onChange={(e) => setNewRecipe({ ...newRecipe, contributor: e.target.value })}
+        />
+      </label>
+      <br />
+      <br />
         <label>
           Recipe Name:
           <input
@@ -56,15 +74,6 @@ const Contribute = ({ onRecipeSubmit }) => {
           />
         </label>
         <br />
-        <label>
-          Contributor:
-          <input
-            type="text"
-            name="contributor"
-            value={newRecipe.contributor}
-            onChange={(e) => setNewRecipe({ ...newRecipe, contributor: e.target.value })}
-          />
-        </label>
         <br />
         <label>
           Style/Nationality:
@@ -75,6 +84,7 @@ const Contribute = ({ onRecipeSubmit }) => {
             onChange={(e) => setNewRecipe({ ...newRecipe, style: e.target.value })}
           />
         </label>
+        <br />
         <br />
         <label>
           Image URL (optional):
@@ -103,8 +113,6 @@ const Contribute = ({ onRecipeSubmit }) => {
         </button>
         <br />
 
-
-
         <h4>Instructions:</h4>
         {newRecipe.instructions.map((instruction, index) => (
           <div key={index}>
@@ -121,6 +129,10 @@ const Contribute = ({ onRecipeSubmit }) => {
         <br />
         <br />
         <button type="submit">Submit Recipe</button>
+        <br />
+        <br />
+        <br />
+        <br />
       </form>
     </div>
   );

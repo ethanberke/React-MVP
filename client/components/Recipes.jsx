@@ -8,14 +8,14 @@ const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
         <div className="recipe">
           <h2>{selectedRecipe.recipe_name}</h2>
           <br />
-          <p>Contributor: {selectedRecipe.contributor}</p>
+          <h2>Contributor: {selectedRecipe.contributor}</h2>
           <br />
-          <p>Style: {selectedRecipe.style}</p>
+          <h2>Style: {selectedRecipe.style}</h2>
           <br />
           <img
           src={selectedRecipe.image_url}
           alt="Recipe"
-          style={{ maxWidth: "300px", border: "1px solid black" }}
+          style={{ maxWidth: "450px", border: "1px solid black" }}
         />
           <br />
           <h3>Ingredients:</h3>
