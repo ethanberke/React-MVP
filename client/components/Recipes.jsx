@@ -3,6 +3,7 @@ import React from "react";
 const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
   return (
     <div>
+
       {selectedRecipe ? (
         <div className="recipe">
           <h2>{selectedRecipe.recipe_name}</h2>

@@ -6,6 +6,11 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [showContribute, setShowContribute] = useState(false);
+  const [showRecipe, setShowRecipe] = useState(false);
+
+  const toggleShowRecipe = () => {
+    setShowRecipe(true);
+  };
 
   const handleContributeClick = () => {
     setShowContribute(!showContribute); // Toggle the contribute display
