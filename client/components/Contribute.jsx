@@ -86,6 +86,8 @@ const Contribute = ({ onRecipeSubmit }) => {
           />
         </label>
         <br />
+
+        
         <h4>Ingredients:</h4>
         {newRecipe.ingredients.map((ingredient, index) => (
           <div key={index}>
@@ -100,6 +102,9 @@ const Contribute = ({ onRecipeSubmit }) => {
           Add Ingredient
         </button>
         <br />
+
+
+
         <h4>Instructions:</h4>
         {newRecipe.instructions.map((instruction, index) => (
           <div key={index}>

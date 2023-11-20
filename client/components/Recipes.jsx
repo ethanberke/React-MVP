@@ -21,7 +21,7 @@ const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
           <h3>Ingredients:</h3>
           <ul>
             {selectedRecipe.ingredients && selectedRecipe.ingredients.map((ingredient, index) => (
-              <li key={`ingredient-${index}`}>{ingredient.ingredient}</li>
+              <li key={`ingredient-${index}`}>{ingredient.ingredient}</li> 
             ))}
           </ul>
           <br />
