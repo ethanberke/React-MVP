@@ -126,7 +126,6 @@ app.get("/api/recipes", (req, res) => {
 app.get("/api/recipes/:recipe_id", (req, res) => {
   const recipeId = req.params.recipe_id;
 
-  // Query to fetch recipe details, ingredients, and instructions for a specific recipe ID
   sql`
     SELECT 
       recipes.id AS recipe_id,
@@ -150,9 +149,8 @@ app.get("/api/recipes/:recipe_id", (req, res) => {
   `
     .then((data) => {
       if (data.length === 0) {
-        res.sendStatus(404); // Recipe not found
+        res.sendStatus(404);
       } else {
-        // Reformatting data to group ingredients and instructions for the recipe
         const recipeData = {
           recipe_id: data[0].recipe_id,
           contributor: data[0].contributor,
@@ -162,27 +160,30 @@ app.get("/api/recipes/:recipe_id", (req, res) => {
           ingredients: [],
           instructions: [],
         };
+        //Set prevents duplication
+        const seenIngredients = new Set();
+        const seenInstructions = new Set();
 
-        // Loop through data to populate ingredients and instructions
         data.forEach((row) => {
-          if (row.ingredient_id && row.ingredient) {
+          if (row.ingredient_id && row.ingredient && !seenIngredients.has(row.ingredient_id)) {
             recipeData.ingredients.push({ ingredient_id: row.ingredient_id, ingredient: row.ingredient });
+            seenIngredients.add(row.ingredient_id);
           }
 
-          if (row.instruction_id && row.step_order && row.step) {
+          if (row.instruction_id && row.step_order && row.step && !seenInstructions.has(row.instruction_id)) {
             recipeData.instructions.push({ instruction_id: row.instruction_id, step_order: row.step_order, step: row.step });
+            seenInstructions.add(row.instruction_id);
           }
         });
 
-        res.json(recipeData); // Send the formatted recipe data
+        res.json(recipeData);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500); // Server error
+      res.sendStatus(500);
     });
 });
-
 
 //recipes
 app.post("/api/recipes", (req, res) => {
