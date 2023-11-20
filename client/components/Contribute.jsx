@@ -10,22 +10,11 @@ const Contribute = ({ onRecipeSubmit }) => {
     instructions: [],
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewRecipe({ ...newRecipe, [name]: value });
-  };
-
   const handleAddIngredient = () => {
     setNewRecipe({
       ...newRecipe,
       ingredients: [...newRecipe.ingredients, ""],
     });
-  };
-
-  const handleIngredientChange = (e, index) => {
-    const ingredients = [...newRecipe.ingredients];
-    ingredients[index] = e.target.value;
-    setNewRecipe({ ...newRecipe, ingredients });
   };
 
   const handleAddInstruction = () => {
@@ -35,15 +24,20 @@ const Contribute = ({ onRecipeSubmit }) => {
     });
   };
 
+  const handleIngredientChange = (e, index) => {
+    const updatedIngredients = [...newRecipe.ingredients];
+    updatedIngredients[index] = e.target.value;
+    setNewRecipe({ ...newRecipe, ingredients: updatedIngredients });
+  };
+
   const handleInstructionChange = (e, index) => {
-    const instructions = [...newRecipe.instructions];
-    instructions[index] = e.target.value;
-    setNewRecipe({ ...newRecipe, instructions });
+    const updatedInstructions = [...newRecipe.instructions];
+    updatedInstructions[index] = e.target.value;
+    setNewRecipe({ ...newRecipe, instructions: updatedInstructions });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call the onRecipeSubmit function from props to submit the new recipe
     onRecipeSubmit(newRecipe);
   };
 
@@ -52,42 +46,42 @@ const Contribute = ({ onRecipeSubmit }) => {
       <h3>Contribute a Recipe</h3>
       <form onSubmit={handleSubmit}>
         <label>
-          Contributor:
-          <input
-            type="text"
-            name="contributor"
-            value={newRecipe.contributor}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
           Recipe Name:
           <input
             type="text"
             name="recipe_name"
             value={newRecipe.recipe_name}
-            onChange={handleInputChange}
+            onChange={(e) => setNewRecipe({ ...newRecipe, recipe_name: e.target.value })}
           />
         </label>
         <br />
         <label>
-          Style:
+          Contributor:
+          <input
+            type="text"
+            name="contributor"
+            value={newRecipe.contributor}
+            onChange={(e) => setNewRecipe({ ...newRecipe, contributor: e.target.value })}
+          />
+        </label>
+        <br />
+        <label>
+          Style/Nationality:
           <input
             type="text"
             name="style"
             value={newRecipe.style}
-            onChange={handleInputChange}
+            onChange={(e) => setNewRecipe({ ...newRecipe, style: e.target.value })}
           />
         </label>
         <br />
         <label>
-          Image URL:
+          Image URL (optional):
           <input
             type="text"
             name="image_url"
             value={newRecipe.image_url}
-            onChange={handleInputChange}
+            onChange={(e) => setNewRecipe({ ...newRecipe, image_url: e.target.value })}
           />
         </label>
         <br />
@@ -118,6 +112,7 @@ const Contribute = ({ onRecipeSubmit }) => {
         <button type="button" onClick={handleAddInstruction}>
           Add Instruction
         </button>
+        <br />
         <br />
         <button type="submit">Submit Recipe</button>
       </form>

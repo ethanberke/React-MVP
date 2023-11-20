@@ -1,7 +1,6 @@
 import React from "react";
 
 const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
-
   return (
     <div>
       {selectedRecipe ? (
@@ -11,13 +10,13 @@ const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
           <p>Style: {selectedRecipe.style}</p>
           <h3>Ingredients:</h3>
           <ul>
-            {selectedRecipe.ingredients.map((ingredient, index) => (
+            {selectedRecipe.ingredients && selectedRecipe.ingredients.map((ingredient, index) => (
               <li key={`ingredient-${index}`}>{ingredient.ingredient}</li>
             ))}
           </ul>
           <h3>Instructions:</h3>
           <ol>
-            {selectedRecipe.instructions.map((step, index) => (
+            {selectedRecipe.instructions && selectedRecipe.instructions.map((step, index) => (
               <li key={`step-${index}`}>{step.step}</li>
             ))}
           </ol>

@@ -91,33 +91,98 @@ app.get("/api/recipes", (req, res) => {
 
 
 
-app.get("/api/recipes/:recipe_name", (req, res) => {
-  const recipeName = req.params.recipe_name;
-  sql`SELECT * FROM recipes WHERE recipe_name = ${recipeName}`
-    .then((data) => {
-      if (data.length === 0) {
-        res.sendStatus(404);
-      } else {
-        res.json(data[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-});
-
-// app.get("/api/recipes/random", (req, res) => {
-//   sql`SELECT * FROM recipes ORDER BY RANDOM() LIMIT 1`
+// app.get("/api/recipes/:recipe_name", (req, res) => {
+//   const recipeName = req.params.recipe_name;
+//   sql`SELECT * FROM recipes WHERE recipe_name = ${recipeName}`
 //     .then((data) => {
-//       console.log(data)
-//       res.json(data[0]);
+//       if (data.length === 0) {
+//         res.sendStatus(404);
+//       } else {
+//         res.json(data[0]);
+//       }
 //     })
 //     .catch((err) => {
 //       console.error(err);
 //       res.sendStatus(500);
 //     });
 // });
+
+// app.get("/api/recipes/:recipe_id", (req, res) => {
+//   const recipeId = req.params.recipe_id;
+//   sql`SELECT * FROM recipes WHERE id = ${recipeId}`
+//     .then((data) => {
+//       if (data.length === 0) {
+//         res.sendStatus(404);
+//       } else {
+//         res.json(data[0]);
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// });
+
+app.get("/api/recipes/:recipe_id", (req, res) => {
+  const recipeId = req.params.recipe_id;
+
+  // Query to fetch recipe details, ingredients, and instructions for a specific recipe ID
+  sql`
+    SELECT 
+      recipes.id AS recipe_id,
+      recipes.contributor,
+      recipes.recipe_name,
+      recipes.style,
+      recipes.image_url,
+      ingredients.id AS ingredient_id,
+      ingredients.ingredient,
+      instructions.id AS instruction_id,
+      instructions.step_order,
+      instructions.step
+    FROM 
+      recipes
+    INNER JOIN 
+      ingredients ON recipes.id = ingredients.recipe_id
+    INNER JOIN 
+      instructions ON recipes.id = instructions.recipe_id
+    WHERE 
+      recipes.id = ${recipeId}
+  `
+    .then((data) => {
+      if (data.length === 0) {
+        res.sendStatus(404); // Recipe not found
+      } else {
+        // Reformatting data to group ingredients and instructions for the recipe
+        const recipeData = {
+          recipe_id: data[0].recipe_id,
+          contributor: data[0].contributor,
+          recipe_name: data[0].recipe_name,
+          style: data[0].style,
+          image_url: data[0].image_url,
+          ingredients: [],
+          instructions: [],
+        };
+
+        // Loop through data to populate ingredients and instructions
+        data.forEach((row) => {
+          if (row.ingredient_id && row.ingredient) {
+            recipeData.ingredients.push({ ingredient_id: row.ingredient_id, ingredient: row.ingredient });
+          }
+
+          if (row.instruction_id && row.step_order && row.step) {
+            recipeData.instructions.push({ instruction_id: row.instruction_id, step_order: row.step_order, step: row.step });
+          }
+        });
+
+        res.json(recipeData); // Send the formatted recipe data
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500); // Server error
+    });
+});
+
 
 //recipes
 app.post("/api/recipes", (req, res) => {
