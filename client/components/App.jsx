@@ -110,8 +110,8 @@ const App = () => {
       
       <Recipes
       selectedRecipe={selectedRecipe}
+      handleRecipeSelection={handleRecipeSelection}
       recipes={recipes}
-        handleRecipeSelection={handleRecipeSelection}
       />
 <Contribute onRecipeSubmit={(newRecipe) => handleRecipeSubmit(newRecipe)} />
     </main>

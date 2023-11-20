@@ -19,8 +19,8 @@ body {
   display: flex;
   align-items: center;
   border: 1px solid black;
-  padding: 2px;
-  max-width: 200px;
+  padding: 20px;
+  max-width: flex;
 }
 
 .recipe + .recipe {
@@ -29,4 +29,8 @@ body {
 
 .recipe > * + * {
   margin-left: 4px;
+}
+
+.recipe br {
+  margin-top: 12px;
 }
