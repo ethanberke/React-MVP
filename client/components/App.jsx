@@ -8,15 +8,10 @@ const App = () => {
   const [showContribute, setShowContribute] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
 
-  const toggleShowRecipe = () => {
-    setShowRecipe(true);
-  };
-
   const handleContributeClick = () => {
     setShowContribute(!showContribute); // Toggle the contribute display
   };
   
-
   console.log(recipes)
   useEffect(() => {
     fetch("/api/recipes")
@@ -131,13 +126,17 @@ const App = () => {
   </select>
   <br />
   <br />
-      <Recipes
-      selectedRecipe={selectedRecipe}
-      handleRecipeSelection={handleRecipeSelection}
-      recipes={recipes}
-      />
+  {selectedRecipe !== null && (
+    <Recipes
+    selectedRecipe={selectedRecipe}
+    handleRecipeSelection={handleRecipeSelection}
+    recipes={recipes}
+    />
+  )}
       <br />
       <button onClick={handleContributeClick}>Contribute</button>
+      <br />
+      <br />
       {showContribute && (
         <Contribute onRecipeSubmit={(newRecipe) => handleRecipeSubmit(newRecipe)} />
   )}

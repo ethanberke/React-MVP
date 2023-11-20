@@ -45,3 +45,13 @@ margin-bottom: 50px;
 .recipe br {
   margin-top: 12px;
 }
+
+ul li {
+  margin-bottom: 14px;
+  text-indent: 0;
+}
+
+ol li {
+  margin-bottom: 20px;
+  text-indent: 0;
+}
