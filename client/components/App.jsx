@@ -12,7 +12,6 @@ const App = () => {
     setShowContribute(!showContribute); // Toggle the contribute display
   };
   
-  console.log(recipes)
   useEffect(() => {
     fetch("/api/recipes")
       .then((res) => res.json())
