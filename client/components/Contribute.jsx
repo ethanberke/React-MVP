@@ -43,7 +43,7 @@ const Contribute = ({ onRecipeSubmit }) => {
 
   return (
     
-    <div>
+    <div className="contribute">
       <h3>Contribute a Recipe</h3>
       <form onSubmit={handleSubmit}>
         <label>

@@ -5,30 +5,29 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding-top:50px;
-  padding-bottom:50px;
+  /* padding-top:60px;
+  padding-bottom:60px; */
+  padding: 60px;
 }
 
 
 .main {
-  padding: 8px;
+  padding: 30px;
   text-align:center;
+  max-height: calc(100vh - 100px);
 }
 
 .recipe {
-  display: flex;
+ display: flex;
   align-items: center;
   border: 1px solid black;
   padding: 20px;
   max-width: flex;
+  text-align: center;
 }
 
-.recipe + .recipe {
-  margin-top: 4px;
-}
-
-.recipe > * + * {
-  margin-left: 4px;
+.contribute {
+display:flex;
 }
 
 .recipe br {

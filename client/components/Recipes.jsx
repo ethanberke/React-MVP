@@ -32,15 +32,6 @@ const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
           </ol>
         </div>
       ) : null}
-
-      <select onChange={(event) => handleRecipeSelection(event.target.value)}>
-        <option value="">Select a recipe</option>
-        {recipes.map((recipe) => (
-          <option key={recipe.recipe_id} value={recipe.recipe_id}>
-            {recipe.recipe_name}
-          </option>
-        ))}
-      </select>
     </div>
   );
 };

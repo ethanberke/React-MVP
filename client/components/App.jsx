@@ -5,6 +5,11 @@ import Contribute from "./Contribute.jsx";
 const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [showContribute, setShowContribute] = useState(false);
+
+  const handleContributeClick = () => {
+    setShowContribute(!showContribute); // Toggle the contribute display
+  };
   
 
   console.log(recipes)
@@ -105,15 +110,28 @@ const App = () => {
   
 
   return (
-    <main>
+    <main className="main">
       <h1>Galvanize Recipes</h1>
       
+      
+      
+      <select onChange={(event) => handleRecipeSelection(event.target.value)}>
+    <option value="">Select a recipe</option>
+    {recipes.map((recipe) => (
+      <option key={recipe.recipe_id} value={recipe.recipe_id}>
+        {recipe.recipe_name}
+      </option>
+    ))}
+  </select>
       <Recipes
       selectedRecipe={selectedRecipe}
       handleRecipeSelection={handleRecipeSelection}
       recipes={recipes}
       />
-<Contribute onRecipeSubmit={(newRecipe) => handleRecipeSubmit(newRecipe)} />
+      <button onClick={handleContributeClick}>Contribute</button>
+      {showContribute && (
+        <Contribute onRecipeSubmit={(newRecipe) => handleRecipeSubmit(newRecipe)} />
+  )}
     </main>
   );
 };
