@@ -62,10 +62,12 @@ const App = () => {
         console.log("Recipe added:", recipeData);
   
         // Use the added recipe's ID for ingredients and instructions
-        const recipeId = recipeData.recipe_id;
-  
+        const recipeId = recipeData.id;
+       console.log("Recipe ID", recipeData.id)
         // POST request to add ingredients
         newRecipe.ingredients.forEach((ingredient) => {
+          console.log("ingredient: ", ingredient)
+
           fetch("/api/ingredients", {
             method: "POST",
             headers: {
@@ -87,6 +89,7 @@ const App = () => {
   
         // POST request to add instructions
         newRecipe.instructions.forEach((instruction, index) => {
+          console.log("instruction: ", instruction, "index", index)
           fetch("/api/instructions", {
             method: "POST",
             headers: {
@@ -128,11 +131,13 @@ const App = () => {
       </option>
     ))}
   </select>
+  <br />
       <Recipes
       selectedRecipe={selectedRecipe}
       handleRecipeSelection={handleRecipeSelection}
       recipes={recipes}
       />
+      <br />
       <button onClick={handleContributeClick}>Contribute</button>
       {showContribute && (
         <Contribute onRecipeSubmit={(newRecipe) => handleRecipeSubmit(newRecipe)} />
