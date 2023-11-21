@@ -8,6 +8,8 @@ const App = () => {
   const [showContribute, setShowContribute] = useState(false);
   const [showRecipe, setShowRecipe] = useState(false);
 
+  console.log(selectedRecipe)
+
   const handleContributeClick = () => {
     setShowContribute(!showContribute); // Toggle the contribute display
   };
@@ -17,9 +19,9 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data);
-        const recipeNames = data.map((recipe) => recipe.recipe_name);
-        const uniqueRecipes = [...new Set(recipeNames)];
-        setSelectedRecipe(uniqueRecipes[0]);
+        // const recipeNames = data.map((recipe) => recipe.recipe_name);
+        // const uniqueRecipes = [...new Set(recipeNames)];
+        // setSelectedRecipe(uniqueRecipes[0]);
       })
       .catch((error) => {
         console.error("Error fetching recipes:", error);
@@ -27,6 +29,11 @@ const App = () => {
   }, []);
 
   const handleRecipeSelection = (recipe_id) => {
+    if (recipe_id === '') {
+      setSelectedRecipe(null);
+      return;
+    }
+    
     fetch(`/api/recipes/${recipe_id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -125,7 +132,7 @@ const App = () => {
   </select>
   <br />
   <br />
-  {selectedRecipe !== null && (
+  { selectedRecipe !== null && (
     <Recipes
     selectedRecipe={selectedRecipe}
     handleRecipeSelection={handleRecipeSelection}

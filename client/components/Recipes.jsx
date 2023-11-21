@@ -1,6 +1,7 @@
 import React from "react";
 
 const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
+  if (selectedRecipe) {
   return (
     <div>
 
@@ -36,5 +37,5 @@ const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
     </div>
   );
 };
-
+}
 export default Recipes;
