@@ -1,4 +1,6 @@
 Galvanize Recipes App
+
+![Selected Recipe](https://file%252B.vscode-resource.vscode-cdn.net/Users/Ethan/Documents/Coding/React-MVP/client/images/SelectedRecipe.png?version%253D1700583119139)
 The Galvanize Recipes App is a web application designed to display various recipes contributed by the members of Galvanize Operation Level Up MCSPB-2309 cohort. It allows users to view recipes, contribute their own recipes, and browse through different culinary creations.
 
 Functionality:
@@ -6,7 +8,13 @@ View Recipes: Users can browse through a list of available recipes.
 
 Recipe Details: Clicking on a specific recipe displays its details, including ingredients, instructions, contributor, style, and an optional image.
 
+![Galvanize Opening Screen](https://file%252B.vscode-resource.vscode-cdn.net/Users/Ethan/Documents/Coding/React-MVP/client/images/GalvanizeOpening.png?version%253D1700583386958)
+
+![Instructions](https://file%252B.vscode-resource.vscode-cdn.net/Users/Ethan/Documents/Coding/React-MVP/client/images/Instructions.png?version%253D1700583368815)
+
 Contribute: Users can submit their own recipes by providing details such as contributor, recipe name, style, image (optional), ingredients, and instructions.
+
+![Contribute Screen](https://file%252B.vscode-resource.vscode-cdn.net/Users/Ethan/Documents/Coding/React-MVP/client/images/ContributeScreen.png?version%253D1700583408576)
 
 Stack Used: The application is built using React for the front-end and Express.js for the back-end. It employs PostgreSQL as the database to store recipe information.
 
