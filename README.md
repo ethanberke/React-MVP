@@ -1,6 +1,7 @@
 Galvanize Recipes App
 
 ![Selected Recipe](https://file%252B.vscode-resource.vscode-cdn.net/Users/Ethan/Documents/Coding/React-MVP/client/images/SelectedRecipe.png?version%253D1700583119139)
+
 The Galvanize Recipes App is a web application designed to display various recipes contributed by the members of Galvanize Operation Level Up MCSPB-2309 cohort. It allows users to view recipes, contribute their own recipes, and browse through different culinary creations.
 
 Functionality:
