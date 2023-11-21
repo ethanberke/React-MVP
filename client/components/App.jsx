@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Recipes from "./Recipes.jsx";
 import Contribute from "./Contribute.jsx";
-
 const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -120,7 +119,6 @@ const App = () => {
   return (
     <main className="main">
       <h1>Galvanize Recipes</h1>
-      
       <select onChange={(event) => handleRecipeSelection(event.target.value)}>
     <option value="">Select a recipe</option>
     {recipes.map((recipe) => (

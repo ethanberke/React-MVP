@@ -35,8 +35,8 @@ VALUES
   ('Danny', 'Just Okay Beef Stew', 'American', 'https://www.budgetbytes.com/wp-content/uploads/2023/02/Slow-Cooker-Beef-Stew-V1.jpeg'),
   ('Mitchell', 'Pork Adobo', 'Filipino', 'https://thewoksoflife.com/wp-content/uploads/2016/12/pork-adobo-4.jpg'),
   ('Mitchell', 'Pad Thai', 'Thai', 'https://hot-thai-kitchen.com/wp-content/uploads/2019/09/pad-thai-blog.jpg'),
-  ('Mitchell', 'Creamy Garlic Pork Chops', 'American', 'https://www.saltandlavender.com/wp-content/uploads/2020/07/creamy-garlic-pork-chops-1-1024x1536.jpg');
-
+  ('Mitchell', 'Creamy Garlic Pork Chops', 'American', 'https://www.saltandlavender.com/wp-content/uploads/2020/07/creamy-garlic-pork-chops-1-1024x1536.jpg'),
+  ('Ethan', 'Crushed Potatoes with Spring Onions and Cheese', 'English', 'https://cdn-images.the-express.com/img/dynamic/39/590x/118267_1.jpg');
 -- Get recipe IDs
 SELECT id FROM recipes;
 
@@ -91,8 +91,13 @@ VALUES
   (4, '1/2 teaspoon lemon juice'),
   (4, '1/4 teaspoon garlic powder'),
   (4, '3/4 cup heavy/whipping cream'),
-  (4, 'Fresh parsley chopped (optional, to taste)');
-
+  (4, 'Fresh parsley chopped (optional, to taste)'),
+  (5, '1.25kg red-skinned potatoes, unpeeled (cut any large ones to the same size as the smaller ones)'),
+  (5, '30g of butter, optional'),
+  (5, '4 spring onions'),
+  (5, '100g cornichonns or sweet pickled gherkins'),
+  (5, '175g Gruyere cheese, grated'),
+  (5, 'Sea salt and freshly ground black pepper');
 
 
 -- Insert into instructions table
@@ -127,7 +132,13 @@ VALUES
   (4, 4, 'Push the garlic to one side of the pan and sprinkle the flour in (avoiding the garlic). Let it cook for around 30 seconds, and give it a stir so it is incorporated with the butter (we are making a quick roux).'),
   (4, 5, 'Add in the chicken broth and lemon juice. Stir and let it cook for about a minute or until the sauce is noticeably thickened.'),
   (4, 6, 'Add in the garlic powder and cream. Stir or whisk it until the garlic powder has dissolved.'),
-  (4, 7, 'Add the pork back in and cook for another 3-5 minutes or until the sauce has thickened up a bit (let the sauce bubble a bit but not furiously boil) and the pork chops are fully cooked through (145F minimum). Keep in mind the pork`s temperature will continue to rise once you stop cooking it, so if it is close, I would take it off the heat and let it rest for a few minutes before serving. Season the sauce with extra salt & pepper as needed and parsley if you wish.');
+  (4, 7, 'Add the pork back in and cook for another 3-5 minutes or until the sauce has thickened up a bit (let the sauce bubble a bit but not furiously boil) and the pork chops are fully cooked through (145F minimum). Keep in mind the pork`s temperature will continue to rise once you stop cooking it, so if it is close, I would take it off the heat and let it rest for a few minutes before serving. Season the sauce with extra salt & pepper as needed and parsley if you wish.'),
+  (5, 1, 'Boil the potatoes in salted boiling water until tender'),
+  (5, 2, 'Meanwhile, finely chop the spring onions on the diagonal and dice the cornichons'),  
+  (5, 3, 'Drain the potatoes and roughly crush them (still in their skins) with a potato masher.  Add the butter if using.  Stir in the spring onions and cornichons, then fold in the cheese.  Taste and season as necessary, then serve');
+
+
+
 
 
 

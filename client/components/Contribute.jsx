@@ -101,10 +101,11 @@ const Contribute = ({ onRecipeSubmit }) => {
         <h4>Ingredients:</h4>
         {newRecipe.ingredients.map((ingredient, index) => (
           <div key={index}>
-            <input
-              type="text"
+            <textarea
               value={ingredient}
               onChange={(e) => handleIngredientChange(e, index)}
+              rows={2}
+              cols={50}
             />
           </div>
         ))}
@@ -116,13 +117,15 @@ const Contribute = ({ onRecipeSubmit }) => {
         <h4>Instructions:</h4>
         {newRecipe.instructions.map((instruction, index) => (
           <div key={index}>
-            <input
-              type="text"
+            <textarea
               value={instruction}
               onChange={(e) => handleInstructionChange(e, index)}
+              rows={5} // Adjust the number of visible rows as needed
+              cols={50} // Adjust the number of visible columns as needed
             />
           </div>
         ))}
+        
         <button type="button" onClick={handleAddInstruction}>
           Add Instruction
         </button>
