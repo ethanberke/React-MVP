@@ -17,9 +17,7 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data);
-        // const recipeNames = data.map((recipe) => recipe.recipe_name);
-        // const uniqueRecipes = [...new Set(recipeNames)];
-        // setSelectedRecipe(uniqueRecipes[0]);
+        
       })
       .catch((error) => {
         console.error("Error fetching recipes:", error);

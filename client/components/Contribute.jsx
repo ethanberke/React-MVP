@@ -86,6 +86,7 @@ const Contribute = ({ onRecipeSubmit }) => {
         </label>
         <br />
         <br />
+
         <label>
           Image URL (optional):
           <input
@@ -97,7 +98,6 @@ const Contribute = ({ onRecipeSubmit }) => {
         </label>
         <br />
 
-        
         <h4>Ingredients:</h4>
         {newRecipe.ingredients.map((ingredient, index) => (
           <div key={index}>
@@ -120,8 +120,8 @@ const Contribute = ({ onRecipeSubmit }) => {
             <textarea
               value={instruction}
               onChange={(e) => handleInstructionChange(e, index)}
-              rows={5} // Adjust the number of visible rows as needed
-              cols={50} // Adjust the number of visible columns as needed
+              rows={5}
+              cols={50} 
             />
           </div>
         ))}
@@ -129,6 +129,7 @@ const Contribute = ({ onRecipeSubmit }) => {
         <button type="button" onClick={handleAddInstruction}>
           Add Instruction
         </button>
+        <br />
         <br />
         <br />
         <button type="submit">Submit Recipe</button>

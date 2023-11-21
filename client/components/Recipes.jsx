@@ -1,6 +1,6 @@
 import React from "react";
 
-const Recipes = ({ recipes, selectedRecipe, handleRecipeSelection }) => {
+const Recipes = ({ selectedRecipe }) => {
   if (selectedRecipe) {
   return (
     <div>
