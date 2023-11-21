@@ -11,16 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static("../client"));
 
-// app.get("/api/recipes", (req, res) => {
-//   sql`SELECT * FROM recipes`
-//     .then((rows) => {
-//       res.send(rows);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// });
+
 
 app.get("/api/recipes", (req, res) => {
   sql`
@@ -88,40 +79,6 @@ app.get("/api/recipes", (req, res) => {
       res.sendStatus(500);
     });
 });
-
-
-
-// app.get("/api/recipes/:recipe_name", (req, res) => {
-//   const recipeName = req.params.recipe_name;
-//   sql`SELECT * FROM recipes WHERE recipe_name = ${recipeName}`
-//     .then((data) => {
-//       if (data.length === 0) {
-//         res.sendStatus(404);
-//       } else {
-//         res.json(data[0]);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// });
-
-// app.get("/api/recipes/:recipe_id", (req, res) => {
-//   const recipeId = req.params.recipe_id;
-//   sql`SELECT * FROM recipes WHERE id = ${recipeId}`
-//     .then((data) => {
-//       if (data.length === 0) {
-//         res.sendStatus(404);
-//       } else {
-//         res.json(data[0]);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// });
 
 app.get("/api/recipes/:recipe_id", (req, res) => {
   const recipeId = req.params.recipe_id;
