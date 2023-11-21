@@ -6,7 +6,6 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [showContribute, setShowContribute] = useState(false);
-  const [showRecipe, setShowRecipe] = useState(false);
 
   console.log(selectedRecipe)
 
@@ -33,7 +32,7 @@ const App = () => {
       setSelectedRecipe(null);
       return;
     }
-    
+
     fetch(`/api/recipes/${recipe_id}`)
       .then((res) => res.json())
       .then((data) => {

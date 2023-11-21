@@ -23,7 +23,7 @@ body {
   align-items: center;
   border: 1px solid black;
   padding: 20px;
-  max-width: flex;
+  max-width: 650px;
   text-align: center;
   background-color: rgb(212, 212, 212);
 
@@ -49,9 +49,11 @@ margin-bottom: 50px;
 ul li {
   margin-bottom: 14px;
   text-indent: 0;
+  text-align: justify;
 }
 
 ol li {
   margin-bottom: 20px;
   text-indent: 0;
+  text-align: justify;
 }
