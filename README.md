@@ -1,5 +1,5 @@
 Galvanize Recipes App
-The Galvanize Recipes App is a web application designed to display various recipes contributed by the members of Galvanize Operation Level Up, MCSPB-2309. It allows users to view recipes, contribute their own recipes, and browse through different culinary creations.
+The Galvanize Recipes App is a web application designed to display various recipes contributed by the members of Galvanize Operation Level Up MCSPB-2309 cohort. It allows users to view recipes, contribute their own recipes, and browse through different culinary creations.
 
 Functionality:
 View Recipes: Users can browse through a list of available recipes.

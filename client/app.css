@@ -5,21 +5,24 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* padding-top:60px;
-  padding-bottom:60px; */
   padding: 60px;
 }
 
-
 .main {
-  padding: 30px;
   text-align:center;
   max-height: calc(100vh - 100px);
 }
 
+.main h1 {
+  font-size: 70px;
+  font-family: "serif";
+  font-style: oblique;
+  font-weight: 600
+}
+
 .recipe {
   display: flex;
-  flex-direction: column; /* Display children in a column */
+  flex-direction: column;
   align-items: center;
   border: 1px solid black;
   padding: 20px;
@@ -29,8 +32,18 @@ body {
 
 }
 
+select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  text-align:center;
+  margin-bottom: 15px;
+}
+
 .recipe label {
-  margin-bottom: 10px; /* Add margin between elements */
+  margin-bottom: 10px;
 }
 
 .contribute {
@@ -42,7 +55,8 @@ text-align:center;
 margin-bottom: 50px;
 }
 
-.recipe br {
+.recipe br { 
+  /* recipe break */
   margin-top: 12px;
 }
 
