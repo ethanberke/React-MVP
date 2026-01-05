@@ -1,10 +1,8 @@
 body {
   background-color: rgb(122, 122, 122);
-  margin: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px;
 }
 
 .main {

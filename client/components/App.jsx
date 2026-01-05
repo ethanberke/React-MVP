@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Recipes from "./Recipes.jsx";
+import TADS_AppBar from "./Navbar.jsx";
 import Contribute from "./Contribute.jsx";
+
+
 const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -13,7 +16,7 @@ const App = () => {
   };
   
   useEffect(() => {
-    fetch("/api/recipes")
+    fetch(`${import.meta.env.VITE_API_URL}/recipes`)
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data);
@@ -30,7 +33,7 @@ const App = () => {
       return;
     }
 
-    fetch(`/api/recipes/${recipe_id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/recipes/${recipe_id}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedRecipe(data);
@@ -42,7 +45,7 @@ const App = () => {
 
   const handleRecipeSubmit = (newRecipe) => {
     // POST request to add the recipe
-    fetch("/api/recipes", {
+    fetch(`${import.meta.env.VITE_API_URL}/recipes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +68,7 @@ const App = () => {
         newRecipe.ingredients.forEach((ingredient) => {
           console.log("ingredient: ", ingredient)
 
-          fetch("/api/ingredients", {
+          fetch(`${import.meta.env.VITE_API_URL}/ingredients`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -87,7 +90,7 @@ const App = () => {
         // POST request to add instructions
         newRecipe.instructions.forEach((instruction, index) => {
           console.log("instruction: ", instruction, "index", index)
-          fetch("/api/instructions", {
+          fetch(`${import.meta.env.VITE_API_URL}/instructions`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -113,10 +116,10 @@ const App = () => {
   };
   
   
-
   return (
     <main className="main">
-      <h1>Galvanize Recipes</h1>
+      <TADS_AppBar />
+      <h1>TADS Recipes</h1>
       <select onChange={(event) => handleRecipeSelection(event.target.value)}>
     <option value="">Select a recipe</option>
     {recipes.map((recipe) => (
