@@ -12,8 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import CloudCityIcon from '../images/cloud_city.svg'
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Recipes', 'Contribute', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TADS_AppBar() {
@@ -38,7 +39,9 @@ function TADS_AppBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters>        
+          {/* <CloudCityIcon/> */}
+
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -48,14 +51,14 @@ function TADS_AppBar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'serif',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            TADS Recipes
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -109,9 +112,9 @@ function TADS_AppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            TADS Recipes
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center" }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -125,7 +128,7 @@ function TADS_AppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                Change Me Now
               </IconButton>
             </Tooltip>
             <Menu
