@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import { Link } from "react-router-dom";
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -13,6 +14,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CloudCityIcon from '../images/cloud_city.svg'
+import { useContext } from "react";
+import { ColorModeContext } from "./DarkMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { useTheme } from "@mui/material/styles";
+
 
 const pages = ['Recipes', 'Contribute', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -20,6 +27,8 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function TADS_AppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,22 +48,32 @@ function TADS_AppBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>        
-          {/* <CloudCityIcon/> */}
+        <Toolbar disableGutters>  
           <Box
-            component="img"
-            src="../images/grogu_peak.jpg"
-                      alt="App Icon"
-          sx={{
-            height: 30,
-            width: 80,
-            mr: 2,
-          }}
-          />
+            component={Link}
+            to="/"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              textDecoration: "none",
+            }}>
+
+            <Box
+              component="img"
+              src="../images/grogu_peak.jpg"
+              alt="App Icon"
+              sx={{
+                height: 30,
+                width: 80,
+                mr: 2,
+              }}
+              />
+          </Box>      
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component={Link}
+            to="/"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
@@ -66,7 +85,7 @@ function TADS_AppBar() {
               textDecoration: 'none',
             }}
           >
-            TADS Recipes
+            Cloud City Creations
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -123,22 +142,52 @@ function TADS_AppBar() {
             TADS Recipes
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "center" }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            {/* {pages.map((page) => (
+              // <Button
+              //   key={page}
+              //   onClick={handleCloseNavMenu}
+              //   sx={{ my: 2, color: 'white', display: 'block' }}
+              // >
+              //   {page}
+              // </Button>
+            ))} */}
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{ textTransform: "none", fontSize: "1rem"}}
+            >
+              Home
+            </Button>
+            <Button
+              component={Link}
+              to="/recipes"
+              color="inherit"
+              sx={{ textTransform: "none", fontSize: "1rem"}}
+            >
+              Recipes
+            </Button>
+            <Button
+              component={Link}
+              to="/contribute"
+              color="inherit"
+              sx={{ textTransform: "none", fontSize: "1rem"}}
+            >
+              Contribute
+            </Button>
+            <Button
+              component={Link}
+              to="/about"
+              color="inherit"
+              sx={{ textTransform: "none", fontSize: "1rem"}}
+            >
+              About
+            </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                Dark Mode Toggle
+              <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+                {theme.palette.mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
               </IconButton>
-            </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
