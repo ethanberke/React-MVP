@@ -41,8 +41,16 @@ function TADS_AppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>        
           {/* <CloudCityIcon/> */}
-
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Box
+            component="img"
+            src="../images/grogu_peak.jpg"
+                      alt="App Icon"
+          sx={{
+            height: 30,
+            width: 80,
+            mr: 2,
+          }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -128,7 +136,7 @@ function TADS_AppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                Change Me Now
+                Dark Mode Toggle
               </IconButton>
             </Tooltip>
             <Menu
